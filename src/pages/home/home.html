@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Task List
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-list>
+        <ion-list-header>
+            <h1>List of Tasks</h1>
+        </ion-list-header>
+
+        <ion-item-sliding *ngFor="let task of tasks"  >
+            <ion-item (click)="goToTask(task.id)">
+                <ion-icon name="arrow-forward" item-start ></ion-icon>
+              <h1>{{task.title}}</h1>
+              <p style="color:red" *ngIf="task.priority == 3">High Priority</p>
+              <p style="color:green" *ngIf="task.priority == 2">Normal Priority</p>
+              <p style="color:dimgray" *ngIf="task.priority == 1">Low Priority</p>
+
+            </ion-item>
+            <ion-item-options>
+              <button ion-button color="primary" icon-start (click)="showConfirmation(task.id)">
+                  <ion-icon name="trash" color="danger" item-end></ion-icon>
+                Delete
+              </button>
+
+            </ion-item-options>
+          </ion-item-sliding>
+
+    </ion-list>
+
+<!-- Real floating action button, fixed. It will not scroll with the content -->
+<ion-fab right bottom>
+  <button ion-fab color="secondary" (click)="goToTask(0)"><ion-icon name="add"></ion-icon></button>
+</ion-fab>
+ 
+</ion-content>

@@ -1,0 +1,41 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Task detail</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Title</ion-label>
+      <ion-input type="text" [(ngModel)]="task.title"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label floating>Description</ion-label>
+      <ion-textarea  [(ngModel)]="task.description"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label >Priority</ion-label>
+      <ion-select [(ngModel)]="task.priority">
+        <ion-option value="3">High</ion-option>
+        <ion-option value="2">Medium</ion-option>
+        <ion-option value="1">Low</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Dead Line</ion-label>
+      <ion-datetime  displayFormat="MMM-DD-YYYY" [(ngModel)]="task.deadline" [min]="currentdate" [max]="maxdate"></ion-datetime>
+    </ion-item>
+  
+  </ion-list>
+  
+  <div padding>
+    <button ion-button round (click)="saveData()">Submit</button>
+  </div>
+</ion-content>
